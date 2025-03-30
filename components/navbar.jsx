@@ -16,11 +16,24 @@ const navItems = [
   { name: "Search", path: "/search" },
 ]
 
+const OPEN_CAMPUS_NETWORK_PARAMS = {
+  chainId: process.env.NEXT_PUBLIC_OPEN_CAMPUS_CHAIN_ID,
+  chainName: process.env.NEXT_PUBLIC_OPEN_CAMPUS_CHAIN_NAME,
+  rpcUrls: [process.env.NEXT_PUBLIC_OPEN_CAMPUS_RPC_URL],
+  nativeCurrency: {
+    name: process.env.NEXT_PUBLIC_OPEN_CAMPUS_CURRENCY_NAME,
+    symbol: process.env.NEXT_PUBLIC_OPEN_CAMPUS_CURRENCY_SYMBOL,
+    decimals: Number(process.env.NEXT_PUBLIC_OPEN_CAMPUS_CURRENCY_DECIMALS),
+  },
+  blockExplorerUrls: [process.env.NEXT_PUBLIC_OPEN_CAMPUS_EXPLORER_URL],
+}
+
 export default function Navbar() {
   const pathname = usePathname()
   const isMobile = useMobile()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [account, setAccount] = useState(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +57,39 @@ export default function Navbar() {
   }, [isOpen, isMobile])
 
   const toggleMenu = () => setIsOpen(!isOpen)
+
+  const connectWallet = async () => {
+    if (!window.ethereum) {
+      alert("MetaMask not found! Please install MetaMask.")
+      return
+    }
+
+    try {
+      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" })
+      setAccount(accounts[0])
+
+      const currentChainId = await window.ethereum.request({ method: "eth_chainId" })
+      if (currentChainId !== OPEN_CAMPUS_NETWORK_PARAMS.chainId) {
+        try {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: OPEN_CAMPUS_NETWORK_PARAMS.chainId }],
+          })
+        } catch (switchError) {
+          if (switchError.code === 4902) {
+            await window.ethereum.request({
+              method: "wallet_addEthereumChain",
+              params: [OPEN_CAMPUS_NETWORK_PARAMS],
+            })
+          } else {
+            console.error("Error switching chain:", switchError)
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Wallet connection failed:", error)
+    }
+  }
 
   return (
     <header
@@ -93,9 +139,10 @@ export default function Navbar() {
           <Button
             variant="default"
             size="sm"
+            onClick={connectWallet}
             className="ml-4 bg-gradient-to-r from-pink-600 to-blue-600 hover:from-pink-700 hover:to-blue-700 transition-all duration-300"
           >
-            Connect Wallet
+            {account ? account.slice(0, 6) + "..." + account.slice(-4) : "Connect Wallet"}
           </Button>
         </nav>
 
@@ -131,9 +178,10 @@ export default function Navbar() {
             <Button
               variant="default"
               size="lg"
+              onClick={connectWallet}
               className="mt-4 w-full max-w-xs bg-gradient-to-r from-pink-600 to-blue-600 hover:from-pink-700 hover:to-blue-700 transition-all duration-300"
             >
-              Connect Wallet
+              {account ? account.slice(0, 6) + "..." + account.slice(-4) : "Connect Wallet"}
             </Button>
           </nav>
         </motion.div>
@@ -141,4 +189,3 @@ export default function Navbar() {
     </header>
   )
 }
-
