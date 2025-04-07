@@ -14,15 +14,15 @@ export default function Footer() {
               Secure your research work on the blockchain with timestamped, immutable records.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://x.com/raj_sharma190" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
                 <Twitter size={20} />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://github.com/rajsha10/chronotag" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
                 <Github size={20} />
                 <span className="sr-only">GitHub</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://www.linkedin.com/in/raj-sharma-878194259/" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin size={20} />
                 <span className="sr-only">LinkedIn</span>
               </Link>
@@ -71,9 +71,9 @@ export default function Footer() {
             </div>
           </div>
           <div className="space-y-4">
-            <h4 className="text-sm font-medium">Newsletter</h4>
+            <h4 className="text-sm font-medium">Updates</h4>
             <p className="text-sm text-muted-foreground">
-              Subscribe to our newsletter for updates on new features and DeSci news.
+              Subscribe for updates on new features.
             </p>
             <form className="flex space-x-2">
               <input

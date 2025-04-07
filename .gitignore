@@ -19,6 +19,7 @@ yarn-error.log*
 # contracts
 ignition
 test
+contracts
 
 # env files
 .env*

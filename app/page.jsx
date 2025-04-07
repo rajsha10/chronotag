@@ -14,6 +14,7 @@ import { AnimatedButton } from "@/components/ui/animated-button"
 import { CardHover } from "@/components/ui/card-hover"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import Hero from "@/components/Hero";
 
 export default function Home() {
 
@@ -44,64 +45,7 @@ export default function Home() {
       {authState?.isAuthenticated ? (
         <>
           <Navbar />
-          <section className="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden">
-            <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-background to-background"></div>
-            <div className="container relative z-10">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="flex flex-col space-y-6"
-                >
-                  <div className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 text-sm">
-                    <span className="mr-1 rounded-full bg-dark-red px-1.5 py-0.5 text-xs font-medium">New</span>
-                    <span className="text-muted-foreground">Introducing Chrono Tag for DeSci</span>
-                  </div>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading tracking-tight">
-                    <span className="block">Secure Your Research with</span>
-                    <span className="bg-gradient-to-r from-dark-red via-dark-pink to-blue-primary bg-clip-text text-transparent">
-                      Blockchain Technology
-                    </span>
-                  </h1>
-                  <p className="text-lg text-muted-foreground max-w-md">
-                    Chrono Tag provides immutable, timestamped records of your intellectual property on the blockchain,
-                    ensuring your research is protected and verifiable.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <AnimatedButton size="lg">
-                      <Link href="/register" className="flex items-center gap-2">
-                        Register Your IP <ArrowRight size={16} />
-                      </Link>
-                    </AnimatedButton>
-                    <AnimatedButton variant="outline" size="lg">
-                      <Link href="/search">Search Chrono Tags</Link>
-                    </AnimatedButton>
-                  </div>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="relative"
-                >
-                  <div className="absolute -inset-0.5 rounded-lg bg-gradient-to-r from-dark-red to-blue-primary opacity-30 blur-xl animate-pulse-glow"></div>
-                  <div className="relative rounded-lg border border-border bg-card p-1 shadow-xl">
-                    <div className="aspect-[4/3] overflow-hidden rounded-md">
-                      <Image
-                        src="/placeholder.svg?height=600&width=800"
-                        alt="Chrono Tag Platform"
-                        width={800}
-                        height={600}
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </section>
-
+          <Hero />
           {/* Features Section */}
           <section className="py-16 md:py-24">
             <div className="container">
@@ -120,8 +64,9 @@ export default function Home() {
                   </span>
                 </h2>
                 <p className="text-muted-foreground">
-                  Our platform offers cutting-edge blockchain technology to secure and verify your research work with
-                  timestamped, immutable records.
+                  Secure your research with cutting-edge blockchain technology! Our 
+                  platform creates timestamped, immutable records, providing undeniable 
+                  proof of your work's existence and safeguarding your intellectual property rights. 
                 </p>
               </motion.div>
 
@@ -258,7 +203,7 @@ export default function Home() {
                   <h2 className="text-3xl md:text-4xl font-heading text-white mb-4">Ready to Secure Your Research?</h2>
                   <p className="text-white/80 max-w-2xl mx-auto mb-8">
                     Join thousands of researchers who trust Chrono Tag to protect their intellectual property with
-                    blockchain technology.
+                    EDUCHAIN.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <AnimatedButton className="bg-white text-dark-red hover:bg-white/90" glowOnHover={false} size="lg">
