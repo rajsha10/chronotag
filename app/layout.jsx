@@ -22,12 +22,15 @@ const fontHeading = localFont({
 
 export const metadata = {
   title: "Chrono Tag",
-  description: "Register and secure your research work on the blockchain with Chrono Tag"
+  description: "Register and secure your research work on the blockchain with Chrono Tag",
+  icons: {
+    icon: '/icon.png', 
+  },
 }
 
 const opts = {
-  redirectUri: 'http://localhost:3000/redirect',
-  referralCode: '',
+  redirectUri: 'http://chronotag.vercel.app/redirect',
+  referralCode: 'EDUCHAIN',
 };
 
 export default function RootLayout({ children }) {
