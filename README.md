@@ -105,22 +105,19 @@ chronotag/
 
 ## 📜 License
 
-MIT License © 2025 [Your Name]
+MIT License © 2025 Raj Sharma
 
 ---
 
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change or improve.
+##Not Contributing
 
 ---
 
 ## ✨ Acknowledgements
 
-- Hackathon XYZ for the platform  
+- For EDUCHAIN Semester 3
 - IPFS & Pinata for decentralized storage  
 - Ethereum & Hardhat ecosystem  
-- Open-source contributors
 
 ---
 
@@ -133,6 +130,3 @@ Let’s **tag time itself.**
 
 ```
 
----
-
-Let me know if you want to include screenshots, badges (like Vercel Deploy, License, etc.), or a section for "How It Works" with diagrams.
